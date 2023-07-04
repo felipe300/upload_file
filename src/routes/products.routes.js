@@ -1,9 +1,11 @@
 import { Router } from 'express'
-import { addProductos, getAllProducts } from '../controllers/products.controller.js'
+import { addProducts, getAllProducts } from '../controllers/products.controller.js'
+
+import upload from '../middlewares/upload.middleware.js'
 
 const router = Router()
 
 router.get('/', getAllProducts)
-router.get('/', addProductos)
+router.post('/', upload, addProducts)
 
 export default router

@@ -14,7 +14,7 @@ app.use(morgan('tiny'))
 app.use(express.urlencoded({ extended: true }))
 app.use(upload())
 
-app.get('/api/v1/products', routerProducts)
+app.use('/api/v1/products', routerProducts)
 
 
-export default app	
+export default app

@@ -1,8 +1,8 @@
 import { DataTypes } from 'sequelize'
-import sequelize from "../config/db.config.js"
+import sequelize from '../config/db.config.js'
 
 const Product = sequelize.define(
-	"products",
+	'products',
 	{
 		photoName: {
 			type: DataTypes.STRING(50),
@@ -28,12 +28,12 @@ const Product = sequelize.define(
 		},
 		img: {
 			type: DataTypes.STRING,
-			allowNull: false,
+			allowNull: false
 		}
 	},
 	{
 		timestamps: true,
-		tableName: "products"
+		tableName: 'products'
 	}
 )
 

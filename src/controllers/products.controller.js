@@ -3,12 +3,12 @@ import Product from '../models/Product.model.js'
 
 export const getAllProducts = async (req, res) => {
 	try {
-		let products = await Product.findAll()
+		const products = await Product.findAll()
 
 		res.status(201).json({
 			code: 201,
-			message: "Found all products Products",
-			data: products,
+			message: 'Found all products Products',
+			data: products
 		})
 	} catch (err) {
 		res.status(500).json({
@@ -19,22 +19,20 @@ export const getAllProducts = async (req, res) => {
 }
 
 export const addProducts = async (req, res) => {
-	let { photoName, description, price } = req.body
+	const { photoName, description, price } = req.body
 
 	try {
-		let newProduct = {
+		const productCreated = await Product.create({
 			photoName,
 			description,
 			price: Number(price),
-			img: req.photoImage,
-		}
-
-		let productCreated = await Product.create(newProduct)
+			img: req.photoImage
+		})
 
 		res.status(201).json({
 			code: 201,
-			message: "Product created",
-			data: productCreated,
+			message: 'Product created',
+			data: productCreated
 		})
 	} catch (err) {
 		unlinkSync(req.pathImage)

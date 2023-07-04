@@ -16,5 +16,4 @@ app.use(upload())
 
 app.use('/api/v1/products', routerProducts)
 
-
 export default app

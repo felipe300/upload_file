@@ -29,6 +29,10 @@ const Product = sequelize.define(
 		img: {
 			type: DataTypes.STRING,
 			allowNull: false
+		},
+		ImagePath: {
+			type: DataTypes.STRING,
+			allowNull: false
 		}
 	},
 	{

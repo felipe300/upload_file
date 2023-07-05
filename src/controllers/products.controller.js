@@ -26,7 +26,8 @@ export const addProducts = async (req, res) => {
 			photoName,
 			description,
 			price: Number(price),
-			img: req.photoImage
+			img: req.photoImage,
+			ImagePath: `/public/uploads/uploads/${req.photoImage}`
 		})
 
 		res.status(201).json({

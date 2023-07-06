@@ -33,6 +33,10 @@ const Product = sequelize.define(
 		ImagePath: {
 			type: DataTypes.STRING,
 			allowNull: false
+		},
+		publicIdImage: {
+			type: DataTypes.STRING,
+			allowNull: false
 		}
 	},
 	{

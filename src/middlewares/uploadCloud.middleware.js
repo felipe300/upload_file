@@ -7,7 +7,7 @@ cloudinary.config({
 	api_secret: process.env.CLOUDINARY_API_SECRET
 })
 
-const uploadFiles = (req, res, next) => {
+export const uploadFiles = (req, res, next) => {
 	const photo = req.files.photo
 
 	try {
@@ -45,4 +45,11 @@ const uploadFiles = (req, res, next) => {
 	}
 }
 
-export default uploadFiles
+export const deleteFile = async (imageId) => {
+	cloudinary.uploader.destroy(imageId, (err, result) => {
+		if (err) {
+			return console.log(`Error to delete image from cloud service, ${err.message}`)
+		}
+		console.log(`Image with Id: ${imageId} deleted from cloud service successfully.`)
+	})
+}

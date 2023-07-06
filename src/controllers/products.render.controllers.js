@@ -1,3 +1,4 @@
+import { unlinkSync } from 'fs'
 import Product from '../models/Product.model.js'
 
 export const getAllProducts = async (req, res) => {
@@ -26,7 +27,7 @@ export const addProducts = async (req, res) => {
 			description,
 			price: Number(price),
 			img: req.photoImage,
-			ImagePath: req.photoImage
+			ImagePath: `/public/uploads/uploads/${req.photoImage}`
 		})
 
 		res.status(201).json({
@@ -35,6 +36,7 @@ export const addProducts = async (req, res) => {
 			data: productCreated
 		})
 	} catch (err) {
+		unlinkSync(req.pathImage)
 		res.status(500).json({
 			code: 500,
 			message: `Error to create the product, ${err.message}`

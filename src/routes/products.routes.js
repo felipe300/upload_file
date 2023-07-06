@@ -1,7 +1,7 @@
 import { Router } from 'express'
 import { addProducts, getAllProducts } from '../controllers/products.controller.js'
 
-import upload from '../middlewares/upload.middleware.js'
+import upload from '../middlewares/uploadCloud.middleware.js'
 
 const router = Router()
 

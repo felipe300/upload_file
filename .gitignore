@@ -1,4 +1,5 @@
 node_modules
 public/uploads/*
 .env
+.env.production
 package-lock.json

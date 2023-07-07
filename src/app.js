@@ -4,6 +4,8 @@ import morgan from 'morgan'
 import cors from 'cors'
 
 import routerProducts from './routes/products.routes.js'
+import routerUsers from './routes/users.routes.js'
+import routerViews from './routes/views.routes.js'
 
 import * as path from 'path'
 import { fileURLToPath } from 'url'
@@ -21,5 +23,7 @@ app.use(upload()) // req.files
 app.use('/public', express.static(path.join(__dirname, '../public')))
 
 app.use('/api/v1/products', routerProducts)
+app.use('/api/v1/users', routerUsers)
+app.use('/views', routerViews)
 
 export default app

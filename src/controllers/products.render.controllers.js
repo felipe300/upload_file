@@ -1,5 +1,6 @@
 import { unlinkSync } from 'fs'
 import Product from '../models/Product.model.js'
+import User from '../models/User.model.js'
 
 export const getAllProducts = async (req, res) => {
 	try {
@@ -19,6 +20,16 @@ export const getAllProducts = async (req, res) => {
 }
 
 export const addProducts = async (req, res) => {
+	const userToken = req.user
+	const userDB = await User.findNyPK(userToken.id)
+
+	if (!userDB.admin === true) {
+		return res.status(403).send({
+			code: 403,
+			message: 'User is not allow to create a product'
+		})
+	}
+
 	const { photoName, description, price } = req.body
 
 	try {

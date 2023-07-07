@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 5000
 const main = async () => {
 	try {
 		await sequelize.authenticate()
-		await sequelize.sync({ force: true, alter: true })
+		await sequelize.sync({ force: false, alter: true })
 		app.listen(PORT, () =>
 			console.log(`Server Listening on port => ${PORT}🔥🔥🔥`)
 		)
